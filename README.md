@@ -3,10 +3,12 @@
 🚀 Emby/Jellyfin 媒体库自动化管理工具。本项目提供了一个优雅的 Web 界面，用于管理 STRM 文件生成、海报墙制作以及媒体库同步任务。
 
 ---
-
+本项目依赖以下项目： 
+- [p115client](https://github.com/ChenyangGao/p115client/)
+- [embyExternalUrl](https://github.com/bpking1/embyExternalUrl)  
 ## 🌟 核心功能
 1.  **strm生成**
-    基于p115项目，使用115目录树快速生成strm与复制元数据到本地。
+   * 基于p115项目，使用115目录树快速生成strm与复制元数据到本地。
 
 2.  **媒体库海报生成**
     *   🖼️ **海报生成**：一键为 Emby/Jellyfin 媒体库生成精美的海报墙。
@@ -39,7 +41,7 @@
 ## 🚀 快速开始
 
 ### 1. 前置准备
--   确保您已安装并运行了对应的 Go/Python 后端服务（本仓库仅包含前端静态文件）。
+-   确保您已安装并运行了alist跟cd2，复制元数据与获取视频直链时需要。
 -   准备好 115 网盘账号及 Emby/Jellyfin 服务器信息。
 
 ### 2. 部署步骤
@@ -51,13 +53,15 @@
 2.  **构建/放置文件**
     > 注意：此 HTML 文件通常需要放置在后端服务的 `static` 或 `templates` 目录下，具体路径请参考后端文档。
 3.  **启动服务**
-    启动后端服务，访问 `http://localhost:端口` 即可看到登录界面。
+   * 启动后端服务：
+    访问 `http://localhost:8092` 即可看到登录界面。
+   * 启动emby反代页面：
+    访问 `http://localhost:8091` 即可看到emby页面，使用此端口播放视频不消耗服务器流量
 
 ### 3. 首次配置
 1.  **登录**：使用默认或配置的账号密码登录。
 2.  **配置 Emby**：进入 `Emby管理` -> `Emby配置`，填入您的 Emby 服务器地址和 API Key。
 3.  **添加账号**：进入 `STRM管理` -> `账号列表`，添加 115 Cookie。
-4.  **生成海报**：进入 `海报生成` 页面，点击 `全部生成`。
 
 ---
 
@@ -87,4 +91,10 @@
 
 ## 📄 许可证
 
-本项目基于 [MIT License](./LICENSE) 开源。
+本项目基于 [MIT License](./LICENSE) 许可证。
+
+## 💬 交流群组
+
+欢迎加入我们的 Telegram 群组进行交流讨论：
+
+[![Telegram Group](https://img.shields.io/badge/Telegram-OpenStrm%20Group-blue?style=for-the-badge&logo=telegram)](https://t.me/+N2jM7mnnPzc1YmI1)
