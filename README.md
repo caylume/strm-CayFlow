@@ -5,7 +5,13 @@
 ---
 本项目依赖以下项目： 
 - [p115client](https://github.com/ChenyangGao/p115client/)
-- [embyExternalUrl](https://github.com/bpking1/embyExternalUrl)  
+- [embyExternalUrl](https://github.com/bpking1/embyExternalUrl)
+## 💬 交流群组
+
+欢迎加入我们的 Telegram 群组进行交流讨论：
+
+[![Telegram Group](https://img.shields.io/badge/Telegram-OpenStrm%20Group-blue?style=for-the-badge&logo=telegram)](https://t.me/+N2jM7mnnPzc1YmI1)
+
 ## 🌟 核心功能
 1.  **strm生成**
    * 基于p115项目，使用115目录树快速生成strm与复制元数据到本地。
@@ -23,58 +29,76 @@
 
 ## 📸 界面预览
 
-[此处建议插入一张 UI 截图，展示 Dashboard 或 Poster 页面]
+ ![界面预览](https://s1.imagehub.cc/images/2026/05/01/8336f852f7b5f15f752cf5a78e4ab3f7.jpg) 
+ ![同步目录](https://s1.imagehub.cc/images/2026/05/01/e9f3651c61c432d19edc939ac8a5abbf.jpg) 
+ ![海报目录](https://s1.imagehub.cc/images/2026/05/01/2d47a486e972b2eb1a4d7e47d0a9cb87.jpg) 
 
 *   **直观的卡片式设计**：每个媒体库和账号都以卡片形式展示，状态清晰可见。
 *   **响应式布局**：无论是电脑大屏还是手机端，都能完美适配操作。
 
 ---
 
-## 🛠️ 技术栈
-
--   **前端**：HTML5, CSS3 (Tailwind-like 风格), Vanilla JavaScript (无框架，轻量高效)
--   **交互**：Fetch API 进行前后端通信，支持 Modal 弹窗交互。
--   **样式**：自定义深色/浅色主题系统，支持变量动态切换。
-
----
-
 ## 🚀 快速开始
 
-### 1. 前置准备
+### 前置准备
 -   确保您已安装并运行了alist跟cd2，复制元数据与获取视频直链时需要。
 -   准备好 115 网盘账号及 Emby/Jellyfin 服务器信息。
 
-### 2. 部署步骤
-1.  **克隆项目**
-    ```bash
-    git clone https://github.com/yourname/strm-flow.git
-    cd strm-flow
-    ```
-2.  **构建/放置文件**
-    > 注意：此 HTML 文件通常需要放置在后端服务的 `static` 或 `templates` 目录下，具体路径请参考后端文档。
-3.  **启动服务**
-   * 启动后端服务：
-    访问 `http://localhost:8092` 即可看到登录界面。
-   * 启动emby反代页面：
-    访问 `http://localhost:8091` 即可看到emby页面，使用此端口播放视频不消耗服务器流量
+### 使用 Docker Run
+```bash
+docker run -d \
+  --name strm-cayflow \
+  --user root \
+  --network host \
+  -p 8092:8092 \
+  -p 8091:8091 \
+  -v /volume1:/volume1 \
+  -v /opt/115strm/data:/app/data \
+  -v /opt/115strm/config.json:/app/config.json \
+  -e TZ=Asia/Shanghai \
+  --restart=always \
+  cayalume/strm-cayflow:latest
+```
 
-### 3. 首次配置
+### 使用 Docker Compose
+
+```
+version: '3.8'  # 推荐使用较新的版本规范
+
+services:
+  strm-cayflow:
+    image: cayalume/strm-cayflow:latest
+    container_name: strm-cayflow
+    user: root
+    network_mode: "host"  # 关键：使用主机网络模式
+    ports:
+      - "8091:8091"
+      - "8092:8092"
+    
+    volumes:
+      - /volume1:/volume1
+      - /opt/115strm/data:/app/data
+      - /opt/115strm/config.json:/app/config.json
+    environment:
+            - TZ=Asia/Shanghai
+    restart: always
+```
+## 📝 路径映射说明
+
+| 本地路径 | 容器路径 | 说明 |
+| :--- | :--- | :--- |
+| /volume1 | /volume1 | 网盘挂载路径 |
+| /opt/115strm/data | /app/data| 容器数据存放路径 |
+| /opt/115strm/config.json | /app/config.json | 容器各项配置储存路径 |
+
+---
+###  首次配置
 1.  **登录**：使用默认或配置的账号密码登录。
 2.  **配置 Emby**：进入 `Emby管理` -> `Emby配置`，填入您的 Emby 服务器地址和 API Key。
 3.  **添加账号**：进入 `STRM管理` -> `账号列表`，添加 115 Cookie。
 
 ---
 
-## 📝 配置说明
-
-| 模块 | 关键配置项 | 说明 |
-| :--- | :--- | :--- |
-| **Poster** | `Cron Expression` | 海报生成的定时规则，例如 `0 2 * * *` 表示每天凌晨2点。 |
-| **115 Sync** | `STRM Prefix` | 生成的 STRM 文件中写入的播放路径前缀。 |
-| **TG Notify** | `Bot Token` | Telegram 机器人的 Token，用于接收通知。 |
-| **302 Proxy** | `Alist Token` | Alist 的访问 Token，用于反代 115 资源。 |
-
----
 
 ## 💡 常见问题
 
@@ -92,9 +116,3 @@
 ## 📄 许可证
 
 本项目基于 [MIT License](./LICENSE) 许可证。
-
-## 💬 交流群组
-
-欢迎加入我们的 Telegram 群组进行交流讨论：
-
-[![Telegram Group](https://img.shields.io/badge/Telegram-OpenStrm%20Group-blue?style=for-the-badge&logo=telegram)](https://t.me/+N2jM7mnnPzc1YmI1)
