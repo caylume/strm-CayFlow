@@ -12,7 +12,8 @@
 
 [![Telegram Group](https://img.shields.io/badge/Telegram-OpenStrm%20Group-blue?style=for-the-badge&logo=telegram)](https://t.me/+N2jM7mnnPzc1YmI1)
 ## 更新日志
-**v1.0.1 2026-05-06**  
+**2026-05-06**  
+* v1.0.1  
 新增刮削功能：  
 自动识别电影或是剧集  
 支持本地刮削和网盘刮削  
