@@ -36,8 +36,9 @@
 
 ## 📸 界面预览
 
- ![界面预览](https://s1.imagehub.cc/images/2026/05/01/8336f852f7b5f15f752cf5a78e4ab3f7.jpg) 
+ ![界面预览](https://s1.imagehub.cc/images/2026/05/06/6595a058e365887f3b31a384282203e9.jpg) 
  ![同步目录](https://s1.imagehub.cc/images/2026/05/01/e9f3651c61c432d19edc939ac8a5abbf.jpg) 
+ ![刮削目录](https://s1.imagehub.cc/images/2026/05/06/7a76ad699f381b85f52833b2080ab4a5.jpg)
  ![海报目录](https://s1.imagehub.cc/images/2026/05/01/2d47a486e972b2eb1a4d7e47d0a9cb87.jpg) 
 
 *   **直观的卡片式设计**：每个媒体库和账号都以卡片形式展示，状态清晰可见。
