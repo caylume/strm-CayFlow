@@ -11,7 +11,14 @@
 欢迎加入我们的 Telegram 群组进行交流讨论：
 
 [![Telegram Group](https://img.shields.io/badge/Telegram-OpenStrm%20Group-blue?style=for-the-badge&logo=telegram)](https://t.me/+N2jM7mnnPzc1YmI1)
-
+## 更新日志
+**v1.0.1 2026-05-06**  
+新增刮削功能：  
+自动识别电影或是剧集  
+支持本地刮削和网盘刮削  
+支持自定义tmdb api和图像地址  
+(可选)重命名文件夹为：片名 (年份) {tmdbid}  
+自动整理分类，将在整理目录创建 电影/剧集 文件夹
 ## 🌟 核心功能
 1.  **strm生成**
    * 基于p115项目，使用115目录树快速生成strm与复制元数据到本地。
