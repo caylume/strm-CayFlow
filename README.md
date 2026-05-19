@@ -1,6 +1,6 @@
 # STRM 配置管理面板 (StrmFlow)
 
-🚀 Emby/Jellyfin 媒体库自动化管理工具。本项目提供了一个优雅的 Web 界面，用于管理 STRM 文件生成、海报墙制作以及媒体库同步任务。
+🚀 Emby/Jellyfin 媒体库自动化管理工具。本项目提供了一个优雅的 Web 界面，用于管理 STRM 文件生成、海报墙制作、刮削视频以及媒体库同步任务。
 
 免费项目，源码未上传至github，请自行用docker命令向docker仓库拉取镜像。
 
